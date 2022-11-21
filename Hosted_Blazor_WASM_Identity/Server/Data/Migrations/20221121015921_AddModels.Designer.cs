@@ -3,6 +3,7 @@ using System;
 using Hosted_Blazor_WASM_Identity.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221121015921_AddModels")]
+    partial class AddModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
@@ -93,59 +95,6 @@ namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Hosted_Blazor_WASM_Identity.Shared.Models.Entreprise", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Adress")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Entreprise");
-                });
-
-            modelBuilder.Entity("Hosted_Blazor_WASM_Identity.Shared.Models.Mission", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EntrepriseID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EntrepriseID");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Missions");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -174,15 +123,15 @@ namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "59ade777-8380-4f50-a3c9-7dead000e635",
-                            ConcurrencyStamp = "43aef2ce-5257-41c1-9fe0-47706723de0d",
+                            Id = "bfc31ea5-3b3f-4633-968b-6fd919bd0c82",
+                            ConcurrencyStamp = "0091d653-913b-46ce-aa54-fe03d0d4adca",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fd39314e-fd76-4c21-9709-f8f11c0a1658",
-                            ConcurrencyStamp = "c4997a7b-bebc-46e8-8616-3477711b8722",
+                            Id = "a3cd4215-e785-4553-b7d4-5b9593d2be83",
+                            ConcurrencyStamp = "ca410bdd-bc52-471c-b22e-8ce64bb3bd74",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -292,23 +241,6 @@ namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Hosted_Blazor_WASM_Identity.Shared.Models.Mission", b =>
-                {
-                    b.HasOne("Hosted_Blazor_WASM_Identity.Shared.Models.Entreprise", "Entreprise")
-                        .WithMany()
-                        .HasForeignKey("EntrepriseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Hosted_Blazor_WASM_Identity.Shared.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Entreprise");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

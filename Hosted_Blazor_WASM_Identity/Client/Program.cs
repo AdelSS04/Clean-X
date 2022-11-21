@@ -16,8 +16,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore(config =>
 {
-	config.AddPolicy(Policies.IsAdmin, Policies.IsAdminPolicy());
-	config.AddPolicy(Policies.IsUser, Policies.IsUserPolicy());
+    config.AddPolicy(Policies.IsAdmin, Policies.IsAdminPolicy());
+    config.AddPolicy(Policies.IsUser, Policies.IsUserPolicy());
 });
 builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
 builder.Services.AddScoped<IAuthService, AuthService>();

@@ -1,6 +1,6 @@
 ﻿using Hosted_Blazor_WASM_Identity.Server.Data;
-using Hosted_Blazor_WASM_Identity.Server.Models;
 using Hosted_Blazor_WASM_Identity.Shared.Helpers;
+using Hosted_Blazor_WASM_Identity.Shared.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -15,32 +15,32 @@ string jwtAudience = builder.Configuration["JwtAudience"];
 string jwtSecurityKey = builder.Configuration["JwtSecurityKey"];
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-	options.UseSqlite(connectionString));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>()
-		.AddRoles<IdentityRole>()
-		.AddEntityFrameworkStores<ApplicationDbContext>();
+        .AddRoles<IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-		.AddJwtBearer(options =>
-		{
-			options.TokenValidationParameters = new TokenValidationParameters
-			{
-				ValidateIssuer = true,
-				ValidateAudience = true,
-				ValidateLifetime = true,
-				ValidateIssuerSigningKey = true,
-				ValidIssuer = jwtIssuer,
-				ValidAudience = jwtAudience,
-				IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecurityKey)),
-				ClockSkew = TimeSpan.FromSeconds(0)
-			};
-		});
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtIssuer,
+                ValidAudience = jwtAudience,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecurityKey)),
+                ClockSkew = TimeSpan.FromSeconds(0)
+            };
+        });
 
 builder.Services.AddAuthorization(config =>
 {
-	config.AddPolicy(Policies.IsAdmin, Policies.IsAdminPolicy());
-	config.AddPolicy(Policies.IsUser, Policies.IsUserPolicy());
+    config.AddPolicy(Policies.IsAdmin, Policies.IsAdminPolicy());
+    config.AddPolicy(Policies.IsUser, Policies.IsUserPolicy());
 });
 
 builder.Services.AddControllers();
@@ -50,14 +50,14 @@ WebApplication app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	//app.UseMigrationsEndPoint();
-	app.UseWebAssemblyDebugging();
+    //app.UseMigrationsEndPoint();
+    app.UseWebAssemblyDebugging();
 }
 else
 {
-	app.UseExceptionHandler("/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -72,9 +72,9 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-	endpoints.MapControllers();
-	endpoints.MapRazorPages();
-	endpoints.MapFallbackToFile("index.html");
+    endpoints.MapControllers();
+    endpoints.MapRazorPages();
+    endpoints.MapFallbackToFile("index.html");
 });
 
 app.Run();

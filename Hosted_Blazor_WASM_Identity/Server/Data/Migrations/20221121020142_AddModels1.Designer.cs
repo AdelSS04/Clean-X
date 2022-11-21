@@ -3,6 +3,7 @@ using System;
 using Hosted_Blazor_WASM_Identity.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221121020142_AddModels1")]
+    partial class AddModels1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
@@ -122,16 +124,10 @@ namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("EntrepriseID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Note")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
@@ -174,15 +170,15 @@ namespace Hosted_Blazor_WASM_Identity.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "59ade777-8380-4f50-a3c9-7dead000e635",
-                            ConcurrencyStamp = "43aef2ce-5257-41c1-9fe0-47706723de0d",
+                            Id = "9b45ce37-5c03-4099-8091-0be2564f84a8",
+                            ConcurrencyStamp = "937ccd83-5c44-44ab-9a9b-86dc4b4b56f9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fd39314e-fd76-4c21-9709-f8f11c0a1658",
-                            ConcurrencyStamp = "c4997a7b-bebc-46e8-8616-3477711b8722",
+                            Id = "245f28a1-0e67-4b8a-8f20-6575a23d3699",
+                            ConcurrencyStamp = "a81c3e10-b9ce-45ee-bad5-9ad564cdb494",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
