@@ -1,0 +1,45 @@
+﻿@page "/entreprise"
+@*@attribute [Authorize(Policy = Policies.IsAdmin)]
+*@
+@inject HttpClient Http
+<PageTitle>Entreprise</PageTitle>
+
+<h1>Entreprise Management</h1>
+
+@if (entreprises == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idte</th>
+                <th>Email</th>
+                <th>Phone Numbre</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entreprise in entreprises)
+            {
+                <tr>
+                    <td>@entreprise.Id</td>
+                    <td>@entreprise.Email</td>
+                    <td>@entreprise.PhoneNumber</td>
+                    <td>@entreprise.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Hosted_Blazor_WASM_Identity.Shared.Models.Entreprise[] entreprises;
+
+    protected override async Task OnInitializedAsync()
+    {
+        entreprises = await Http.GetFromJsonAsync<Hosted_Blazor_WASM_Identity.Shared.Models.Entreprise[]>("api/Entreprises");
+    }
+}

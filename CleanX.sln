@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.223
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted_Blazor_WASM_Identity.Server", "Hosted_Blazor_WASM_Identity\Server\Hosted_Blazor_WASM_Identity.Server.csproj", "{B707E25E-E273-465B-ABDC-00B7A045A34E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted_Blazor_WASM_Identity.Server", "Hosted_Blazor_WASM_Identity\Server\Hosted_Blazor_WASM_Identity.Server.csproj", "{B707E25E-E273-465B-ABDC-00B7A045A34E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted_Blazor_WASM_Identity.Client", "Hosted_Blazor_WASM_Identity\Client\Hosted_Blazor_WASM_Identity.Client.csproj", "{A723D4A2-C165-40FC-9B19-8B575872C9F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted_Blazor_WASM_Identity.Client", "Hosted_Blazor_WASM_Identity\Client\Hosted_Blazor_WASM_Identity.Client.csproj", "{A723D4A2-C165-40FC-9B19-8B575872C9F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosted_Blazor_WASM_Identity.Shared", "Hosted_Blazor_WASM_Identity\Shared\Hosted_Blazor_WASM_Identity.Shared.csproj", "{67D5F244-2B8F-49CA-96F8-1F45EA205A56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hosted_Blazor_WASM_Identity.Shared", "Hosted_Blazor_WASM_Identity\Shared\Hosted_Blazor_WASM_Identity.Shared.csproj", "{67D5F244-2B8F-49CA-96F8-1F45EA205A56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
